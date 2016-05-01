@@ -66,6 +66,17 @@
       <Command>copy $(SolutionDir)ChakraCore\Build\VcBuild\bin\x86_release\ChakraCore.dll $(OutputPath)</Command>
       <Message>Copy ChakraCore.dll</Message>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>cd $(SolutionDir)
+git submodule update --init
+cd $(SolutionDir)plugin-sdk
+git submodule update --init
+cmake .
+msbuild /p:Configuration=Release plugin-sdk.sln
+cd $(SolutionDir)ChakraCore
+msbuild /m /p:Platform=x86 /p:Configuration=Release /p:RuntimeLib=static_library Build\Chakra.Core.sln</Command>
+      <Message>Build dependencies</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -89,6 +100,17 @@
       <Command>copy $(SolutionDir)ChakraCore\Build\VcBuild\bin\x86_release\ChakraCore.dll $(OutputPath)</Command>
       <Message>Copy ChakraCore.dll</Message>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>cd $(SolutionDir)
+git submodule update --init
+cd $(SolutionDir)plugin-sdk
+git submodule update --init
+cmake .
+msbuild /p:Configuration=Release plugin-sdk.sln
+cd $(SolutionDir)ChakraCore
+msbuild /m /p:Platform=x86 /p:Configuration=Release /p:RuntimeLib=static_library Build\Chakra.Core.sln</Command>
+      <Message>Build dependencies</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
