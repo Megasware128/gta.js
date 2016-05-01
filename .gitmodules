@@ -1,3 +1,7 @@
 [submodule "plugin-sdk"]
 	path = plugin-sdk
 	url = https://github.com/DK22Pac/plugin-sdk.git
+[submodule "ChakraCore"]
+	path = ChakraCore
+	url = https://github.com/Microsoft/ChakraCore.git
+	branch = release/1.2
