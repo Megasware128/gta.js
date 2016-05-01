@@ -7,4 +7,4 @@ A Grand Theft Auto: San Andreas JavaScript hook
 * [CMake](https://cmake.org/)
 * [Visual Studio](http://visualstudio.com/) of course
 
-Just open the gtasajs.sln and build. Make sure you have Git and CMake in your PATH.
+Just open the `gtasajs.sln` and build. Make sure you have Git and CMake in your PATH.
