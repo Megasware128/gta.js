@@ -64,6 +64,7 @@
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)ChakraCore\Build\VcBuild\bin\x86_release\ChakraCore.dll $(OutputPath)</Command>
+      <Message>Copy ChakraCore.dll</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -86,6 +87,7 @@
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)ChakraCore\Build\VcBuild\bin\x86_release\ChakraCore.dll $(OutputPath)</Command>
+      <Message>Copy ChakraCore.dll</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
