@@ -1,4 +1,4 @@
-# gtasajs
+# gtasa.js
 A Grand Theft Auto: San Andreas JavaScript hook
 
 ## Building
