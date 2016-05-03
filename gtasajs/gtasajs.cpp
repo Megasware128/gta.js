@@ -2,5 +2,21 @@
 //
 
 #include "stdafx.h"
+#include "gtasajs.h"
 
 
+
+
+void gtasajs::Init()
+{
+}
+
+
+void gtasajs::Main()
+{
+}
+
+
+void gtasajs::Close()
+{
+}

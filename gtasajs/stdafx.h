@@ -13,4 +13,11 @@
 
 
 
-// TODO: reference additional headers your program requires here
+// injector header files:
+#include <injector\injector.hpp>
+
+// plugin-sdk header files:
+#include <plugin\plugin.h>
+
+// ChakraCore header files:
+#include <ChakraCore.h>
