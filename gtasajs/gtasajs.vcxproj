@@ -73,12 +73,17 @@
 git submodule update --init
 cd $(SolutionDir)plugin-sdk
 git submodule update --init
-cmake .
-msbuild /p:Configuration=$(ConfigurationName) plugin-sdk.sln
-cd $(SolutionDir)ChakraCore
-msbuild /m /p:Platform=x86 /p:Configuration=$(ConfigurationName) /p:RuntimeLib=static_library Build\Chakra.Core.sln</Command>
-      <Message>Build dependencies</Message>
+cmake .</Command>
+      <Message>Acquire dependencies</Message>
     </PreBuildEvent>
+    <PreLinkEvent>
+      <Command>cd $(SolutionDir)
+msbuild /p:Configuration=$(ConfigurationName) plugin-sdk\plugin-sdk.sln
+msbuild /m /p:Platform=x86 /p:Configuration=$(ConfigurationName) /p:RuntimeLib=static_library ChakraCore\Build\Chakra.Core.sln</Command>
+    </PreLinkEvent>
+    <PreLinkEvent>
+      <Message>Build dependencies</Message>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -107,12 +112,17 @@ msbuild /m /p:Platform=x86 /p:Configuration=$(ConfigurationName) /p:RuntimeLib=s
 git submodule update --init
 cd $(SolutionDir)plugin-sdk
 git submodule update --init
-cmake .
-msbuild /p:Configuration=$(ConfigurationName) plugin-sdk.sln
-cd $(SolutionDir)ChakraCore
-msbuild /m /p:Platform=x86 /p:Configuration=$(ConfigurationName) /p:RuntimeLib=static_library Build\Chakra.Core.sln</Command>
-      <Message>Build dependencies</Message>
+cmake .</Command>
+      <Message>Acquire dependencies</Message>
     </PreBuildEvent>
+    <PreLinkEvent>
+      <Command>cd $(SolutionDir)
+msbuild /p:Configuration=$(ConfigurationName) plugin-sdk\plugin-sdk.sln
+msbuild /m /p:Platform=x86 /p:Configuration=$(ConfigurationName) /p:RuntimeLib=static_library ChakraCore\Build\Chakra.Core.sln</Command>
+    </PreLinkEvent>
+    <PreLinkEvent>
+      <Message>Build dependencies</Message>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
