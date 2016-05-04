@@ -129,6 +129,7 @@ msbuild /m /p:Platform=x86 /p:Configuration=$(ConfigurationName) /p:RuntimeLib=s
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gtasajs.h" />
+    <ClInclude Include="ScriptLoader.h" />
     <ClInclude Include="ScriptRuntime.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -143,6 +144,7 @@ msbuild /m /p:Platform=x86 /p:Configuration=$(ConfigurationName) /p:RuntimeLib=s
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="gtasajs.cpp" />
+    <ClCompile Include="ScriptLoader.cpp" />
     <ClCompile Include="ScriptRuntime.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

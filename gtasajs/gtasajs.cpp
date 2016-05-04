@@ -8,11 +8,14 @@
 
 
 ScriptRuntime *runtime;
+ScriptLoader *loader;
 
 
 void gtasajs::Init()
 {
 	runtime = ScriptRuntime::CreateRuntime();
+	loader = runtime->CreateOrGetLoader();
+	loader->LoadScripts();
 }
 
 

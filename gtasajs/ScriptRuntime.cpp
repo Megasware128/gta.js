@@ -19,3 +19,11 @@ ScriptRuntime* ScriptRuntime::CreateRuntime()
 {
 	return new ScriptRuntime();
 }
+
+
+ScriptLoader* ScriptRuntime::CreateOrGetLoader()
+{
+	if (loader == nullptr)
+		loader = new ScriptLoader(&context);
+	return loader;
+}
