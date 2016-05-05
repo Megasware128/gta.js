@@ -151,7 +151,21 @@ msbuild /m /p:Platform=x86 /p:Configuration=$(ConfigurationName) /p:RuntimeLib=s
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\boost.1.60.0.0\build\native\boost.targets" Condition="Exists('..\packages\boost.1.60.0.0\build\native\boost.targets')" />
+    <Import Project="..\packages\boost_system.1.60.0.0\build\native\boost_system.targets" Condition="Exists('..\packages\boost_system.1.60.0.0\build\native\boost_system.targets')" />
+    <Import Project="..\packages\boost_filesystem.1.60.0.0\build\native\boost_filesystem.targets" Condition="Exists('..\packages\boost_filesystem.1.60.0.0\build\native\boost_filesystem.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\boost.1.60.0.0\build\native\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost.1.60.0.0\build\native\boost.targets'))" />
+    <Error Condition="!Exists('..\packages\boost_system.1.60.0.0\build\native\boost_system.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_system.1.60.0.0\build\native\boost_system.targets'))" />
+    <Error Condition="!Exists('..\packages\boost_filesystem.1.60.0.0\build\native\boost_filesystem.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_filesystem.1.60.0.0\build\native\boost_filesystem.targets'))" />
+  </Target>
 </Project>
