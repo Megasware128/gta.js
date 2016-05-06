@@ -18,6 +18,6 @@ void ScriptLoader::LoadScripts()
 }
 
 
-void ScriptLoader::LoadScript(wstring script)
+void ScriptLoader::LoadScript(string script)
 {
 }
