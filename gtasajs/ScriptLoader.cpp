@@ -27,11 +27,11 @@ void ScriptLoader::LoadScripts()
 			path file = entry.path();
 			if (is_regular_file(file) && file.has_extension() && file.extension() == ".js")
 			{
-				fs::ifstream fileStream(file);
-				ostringstream stringStream;
-				stringStream << fileStream.rdbuf();
+				fs::wifstream fileStream(file);
+				wostringstream stringStream;
+				stringStream << fileStream.rdbuf();;
 				fileStream.close();
-				string script = stringStream.str();
+				wstring script = stringStream.str();
 				LoadScript(script);
 			}
 		}
@@ -43,6 +43,6 @@ void ScriptLoader::LoadScripts()
 }
 
 
-void ScriptLoader::LoadScript(string script)
+void ScriptLoader::LoadScript(wstring script)
 {
 }
