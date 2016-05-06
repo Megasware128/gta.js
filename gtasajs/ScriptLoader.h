@@ -9,7 +9,7 @@ public:
 	ScriptLoader(JsContextRef* context);
 	~ScriptLoader();
 	void LoadScripts();
-	void LoadScript(string script);
+	void LoadScript(wstring script);
 private:
 	JsContextRef context;
 };
