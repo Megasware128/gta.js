@@ -45,4 +45,8 @@ void ScriptLoader::LoadScripts()
 
 void ScriptLoader::LoadScript(wstring script)
 {
+	JsSetCurrentContext(context);
+	JsValueRef result;
+	JsRunScript(script.c_str(), currentSourceContext++, L"", &result);
+	JsSetCurrentContext(JS_INVALID_REFERENCE);
 }

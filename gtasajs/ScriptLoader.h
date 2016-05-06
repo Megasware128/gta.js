@@ -12,5 +12,6 @@ public:
 	void LoadScript(wstring script);
 private:
 	JsContextRef context;
+	unsigned currentSourceContext = 0;
 };
 
