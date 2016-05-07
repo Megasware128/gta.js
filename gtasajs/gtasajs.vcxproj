@@ -129,10 +129,13 @@ msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) C
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gtasajs.h" />
+    <ClInclude Include="helper.h" />
     <ClInclude Include="ScriptLoader.h" />
     <ClInclude Include="ScriptRuntime.h" />
+    <ClInclude Include="SDKLoader.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Task.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -146,6 +149,7 @@ msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) C
     <ClCompile Include="gtasajs.cpp" />
     <ClCompile Include="ScriptLoader.cpp" />
     <ClCompile Include="ScriptRuntime.cpp" />
+    <ClCompile Include="SDKLoader.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

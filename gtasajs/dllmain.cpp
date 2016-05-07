@@ -12,6 +12,8 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 	if (ul_reason_for_call == DLL_PROCESS_ATTACH)
 	{
 		Core::RegisterFunc(FUNC_INITIALISE_RW, gtasajs::Init);
+		Core::RegisterFunc(FUNC_INIT_GAME, gtasajs::Start);
+		Core::RegisterFunc(FUNC_RE_INIT_GAME, gtasajs::Start);
 		Core::RegisterFunc(FUNC_GAME_PROCESS, gtasajs::Main);
 		Core::RegisterFunc(FUNC_SHUTDOWN_RW, gtasajs::Close);
 	}

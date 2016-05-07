@@ -19,12 +19,20 @@ void gtasajs::Init()
 }
 
 
+void gtasajs::Start()
+{
+	runtime->Init();
+}
+
+
 void gtasajs::Main()
 {
+	runtime->Update();
 }
 
 
 void gtasajs::Close()
 {
 	delete runtime;
+	delete loader;
 }
