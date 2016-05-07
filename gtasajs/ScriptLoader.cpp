@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ScriptLoader.h"
-#include <boost\filesystem.hpp>
 #include <sstream>
+#include <boost\filesystem.hpp>
 
 namespace fs = boost::filesystem;
 using namespace fs;

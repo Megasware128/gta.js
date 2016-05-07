@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "ScriptRuntime.h"
 #include <game_sa\functions.h>
-#include "helper.h"
 #include "bindings.h"
+#include "helper.h"
 
 
 void CALLBACK PromiseContinuationCallback(JsValueRef task, void *callbackState)

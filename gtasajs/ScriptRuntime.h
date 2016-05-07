@@ -1,7 +1,7 @@
 #pragma once
+#include <queue>
 #include "ScriptLoader.h"
 #include "SDKLoader.h"
-#include <queue>
 #include "Task.h"
 
 class ScriptRuntime
