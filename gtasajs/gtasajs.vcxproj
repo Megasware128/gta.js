@@ -125,9 +125,6 @@ msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) C
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="bindings.h" />
     <ClInclude Include="gtasajs.h" />
     <ClInclude Include="helper.h" />
