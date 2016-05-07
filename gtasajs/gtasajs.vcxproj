@@ -128,6 +128,7 @@ msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) C
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bindings.h" />
     <ClInclude Include="gtasajs.h" />
     <ClInclude Include="helper.h" />
     <ClInclude Include="ScriptLoader.h" />
@@ -138,6 +139,7 @@ msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) C
     <ClInclude Include="Task.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="bindings.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -147,6 +149,7 @@ msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) C
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="gtasajs.cpp" />
+    <ClCompile Include="helper.cpp" />
     <ClCompile Include="ScriptLoader.cpp" />
     <ClCompile Include="ScriptRuntime.cpp" />
     <ClCompile Include="SDKLoader.cpp" />

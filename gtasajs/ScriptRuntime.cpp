@@ -2,6 +2,7 @@
 #include "ScriptRuntime.h"
 #include <game_sa\functions.h>
 #include "helper.h"
+#include "bindings.h"
 
 
 void CALLBACK PromiseContinuationCallback(JsValueRef task, void *callbackState)
@@ -59,6 +60,8 @@ void ScriptRuntime::Init()
 	CPed* playerPed = FindPlayerPed();
 	JsValueRef player;
 	JsCreateExternalObject(playerPed, nullptr, &player);
+
+	Bindings::Ped(player);
 
 	Js::AddPropertyToObject(game, L"player", player);
 
