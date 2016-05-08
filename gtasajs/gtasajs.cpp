@@ -31,6 +31,14 @@ void gtasajs::Main()
 }
 
 
+void gtasajs::Restart() 
+{
+	Close();
+	Init();
+	Start();
+}
+
+
 void gtasajs::Close()
 {
 	delete runtime;
