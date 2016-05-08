@@ -29,6 +29,7 @@ void SDKLoader::LoadSDK(queue<Task*>* taskQueue)
 	JsValueRef addEventListenerFunction;
 	JsCreateFunction(&addEventListener, taskQueue, &addEventListenerFunction);
 	Js::AddPropertyToObject(game, L"addEventListener", addEventListenerFunction);
+	Js::AddPropertyToObject(global, L"addEventListener", addEventListenerFunction);
 }
 
 
