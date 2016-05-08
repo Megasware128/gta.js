@@ -21,14 +21,18 @@ bool Js::DefineProperty(JsValueRef obj, wstring name, JsNativeFunction getter, J
 	JsCreateObject(&propertyDescriptor);
 
 	JsValueRef get, set;
-	JsCreateFunction(getter, callbackState, &get);
-	JsCreateFunction(setter, callbackState, &set);
+	if (getter != nullptr)
+		JsCreateFunction(getter, callbackState, &get);
+	if (setter != nullptr)
+		JsCreateFunction(setter, callbackState, &set);
 
 	JsValueRef jsTrue;
 	JsGetTrueValue(&jsTrue);
 
-	AddPropertyToObject(propertyDescriptor, L"get", get);
-	AddPropertyToObject(propertyDescriptor, L"set", set);
+	if (getter != nullptr)
+		AddPropertyToObject(propertyDescriptor, L"get", get);
+	if (setter != nullptr)
+		AddPropertyToObject(propertyDescriptor, L"set", set);
 	AddPropertyToObject(propertyDescriptor, L"enumerable", jsTrue);
 	AddPropertyToObject(propertyDescriptor, L"configurable", jsTrue);
 
