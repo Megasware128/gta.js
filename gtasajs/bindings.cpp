@@ -4,36 +4,37 @@
 #include <game_sa\CPed.h>
 
 
-JsValueRef CALLBACK getHealth(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState);
-JsValueRef CALLBACK setHealth(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState);
+JsValueRef CALLBACK getFloat(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState);
+JsValueRef CALLBACK setFloat(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState);
 
 
 void Bindings::Ped(JsValueRef ped) {
 	void* data;
 	JsGetExternalData(ped, &data);
+	CPed* pedNative = (CPed*)data;
 
-	Js::DefineProperty(ped, L"health", getHealth, setHealth, data);
+	Js::DefineProperty(ped, L"health", getFloat, setFloat, &pedNative->m_fHealth);
 }
 
 
-JsValueRef CALLBACK getHealth(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState)
+JsValueRef CALLBACK getFloat(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState)
 {
-	CPed* ped = (CPed*)callbackState;
+	float* floatValue = (float*)callbackState;
 
-	JsValueRef health;
-	JsDoubleToNumber(ped->m_fHealth, &health);
+	JsValueRef numberValue;
+	JsDoubleToNumber(*floatValue, &numberValue);
 
-	return health;
+	return numberValue;
 }
 
-JsValueRef CALLBACK setHealth(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState) 
+JsValueRef CALLBACK setFloat(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState)
 {
-	CPed* ped = (CPed*)callbackState;
+	float* floatValue = (float*)callbackState;
 
-	double health;
-	JsNumberToDouble(arguments[1], &health);
+	double doubleValue;
+	JsNumberToDouble(arguments[1], &doubleValue);
 
-	ped->m_fHealth = health;
+	*floatValue = doubleValue;
 
 	return nullptr;
 }
