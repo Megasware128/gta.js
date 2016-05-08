@@ -27,6 +27,7 @@ ScriptRuntime::ScriptRuntime()
 
 ScriptRuntime::~ScriptRuntime()
 {
+	delete loader;
 	JsDisposeRuntime(runtime);
 }
 

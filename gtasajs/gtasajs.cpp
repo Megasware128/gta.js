@@ -42,5 +42,5 @@ void gtasajs::Restart()
 void gtasajs::Close()
 {
 	delete runtime;
-	delete loader;
+	runtime = nullptr;
 }
