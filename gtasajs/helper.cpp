@@ -20,7 +20,7 @@ bool Js::DefineProperty(JsValueRef obj, wstring name, JsNativeFunction getter, J
 	JsValueRef propertyDescriptor;
 	JsCreateObject(&propertyDescriptor);
 
-	JsValueRef get, set;
+	JsValueRef get = NULL, set = NULL;
 	if (getter != nullptr)
 		JsCreateFunction(getter, callbackState, &get);
 	if (setter != nullptr)
