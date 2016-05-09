@@ -21,6 +21,8 @@ void Bindings::Ped(JsValueRef ped) {
 
 	Js::DefineProperty(ped, L"health", getFloat, setFloat, &pedNative->m_fHealth);
 	Js::DefineProperty(ped, L"armor", getFloat, setFloat, &pedNative->m_fArmour);
+	Js::DefineProperty(ped, L"isDriving", getBool, nullptr, &pedNative->m_bInVehicle);
+	Js::DefineProperty(ped, L"isArrested", getBool, nullptr, &pedNative->m_bIsBeingArrested);
 	Js::DefineProperty(ped, L"model", getInt, nullptr, &pedNative->m_wModelIndex);
 }
 
