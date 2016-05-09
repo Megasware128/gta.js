@@ -20,6 +20,8 @@ void Bindings::Ped(JsValueRef ped) {
 	CPed* pedNative = (CPed*)data;
 
 	Js::DefineProperty(ped, L"health", getFloat, setFloat, &pedNative->m_fHealth);
+	Js::DefineProperty(ped, L"armor", getFloat, setFloat, &pedNative->m_fArmour);
+	Js::DefineProperty(ped, L"model", getInt, nullptr, &pedNative->m_wModelIndex);
 }
 
 
