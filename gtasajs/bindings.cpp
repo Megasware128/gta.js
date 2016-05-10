@@ -25,6 +25,7 @@ void Ped(JsValueRef ped, Container& container) {
 	Js::DefineProperty(ped, L"armor", getFloat, setFloat, &pedNative->m_fArmour);
 	Js::DefineProperty(ped, L"isDriving", getBool, nullptr, container.create_pointer(pedNative, 0x46C, 8));
 	/*Js::DefineProperty(ped, L"isArrested", getBool, nullptr, &pedNative->m_bIsBeingArrested);*/
+	Js::DefineProperty(ped, L"isInvisible", getBool, setBool, container.create_pointer(pedNative, 0x474, 1));
 	Js::DefineProperty(ped, L"model", getInt, nullptr, &pedNative->m_wModelIndex);
 }
 
