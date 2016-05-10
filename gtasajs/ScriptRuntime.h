@@ -1,5 +1,6 @@
 #pragma once
 #include <queue>
+#include "bindings.h"
 #include "ScriptLoader.h"
 #include "SDKLoader.h"
 #include "Task.h"
@@ -18,5 +19,6 @@ private:
 	JsContextRef context;
 	ScriptLoader* loader;
 	queue<Task*> taskQueue;
+	Bindings::Container container;
 };
 

@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "ScriptRuntime.h"
 #include <game_sa\functions.h>
-#include "bindings.h"
 #include "helper.h"
 
 
@@ -62,7 +61,7 @@ void ScriptRuntime::Init()
 	JsValueRef player;
 	JsCreateExternalObject(playerPed, nullptr, &player);
 
-	Bindings::Ped(player);
+	Bindings::Ped(player, container);
 
 	Js::AddPropertyToObject(game, L"player", player);
 
