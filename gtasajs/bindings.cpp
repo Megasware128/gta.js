@@ -2,7 +2,9 @@
 #include "bindings.h"
 #include "helper.h"
 #include <game_sa\CPed.h>
+#include <injector\calling.hpp>
 
+using namespace Bindings;
 
 JsValueRef CALLBACK getFloat(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState);
 JsValueRef CALLBACK setFloat(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState);
@@ -14,13 +16,16 @@ JsValueRef CALLBACK getBool(JsValueRef callee, bool isConstructCall, JsValueRef 
 JsValueRef CALLBACK setBool(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState);
 
 
-void Bindings::Ped(JsValueRef ped) {
+void Ped(JsValueRef ped, Container& container) {
 	void* data;
 	JsGetExternalData(ped, &data);
 	CPed* pedNative = (CPed*)data;
 
 	Js::DefineProperty(ped, L"health", getFloat, setFloat, &pedNative->m_fHealth);
 	Js::DefineProperty(ped, L"armor", getFloat, setFloat, &pedNative->m_fArmour);
+	Js::DefineProperty(ped, L"isDriving", getBool, nullptr, container.create_pointer(pedNative, 0x46C, 8));
+	/*Js::DefineProperty(ped, L"isArrested", getBool, nullptr, &pedNative->m_bIsBeingArrested);*/
+	Js::DefineProperty(ped, L"isInvisible", getBool, setBool, container.create_pointer(pedNative, 0x474, 1));
 	Js::DefineProperty(ped, L"model", getInt, nullptr, &pedNative->m_wModelIndex);
 }
 
@@ -73,22 +78,52 @@ JsValueRef CALLBACK setInt(JsValueRef callee, bool isConstructCall, JsValueRef *
 
 JsValueRef CALLBACK getBool(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState)
 {
-	bool* boolValue = (bool*)callbackState;
+	fake_ptr* ptr = (fake_ptr*)callbackState;
+	bool boolValue = get(ptr->pointer, ptr->offset, ptr->shift);
 
 	JsValueRef booleanValue;
-	JsBoolToBoolean(*boolValue, &booleanValue);
+	JsBoolToBoolean(booleanValue, &booleanValue);
 
 	return booleanValue;
 }
 
 JsValueRef CALLBACK setBool(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState)
 {
-	bool* boolValue = (bool*)callbackState;
+	fake_ptr* ptr = (fake_ptr*)callbackState;
 
 	bool tempBoolValue;
 	JsBooleanToBool(arguments[1], &tempBoolValue);
 
-	*boolValue = tempBoolValue;
+	set(ptr->pointer, ptr->offset, ptr->shift, tempBoolValue);
 
 	return nullptr;
+}
+
+
+fake_ptr::fake_ptr(void* pointer, int offset, int shift)
+{
+	this->pointer = pointer;
+	this->offset = offset;
+	this->shift = shift;
+}
+
+
+Container::Container()
+{
+}
+
+Container::~Container()
+{
+	while (!pointers.empty())
+	{
+		delete pointers.front();
+		pointers.pop();
+	}
+}
+
+fake_ptr* Container::create_pointer(void* base, int offset, int shift)
+{
+	auto pointer = new fake_ptr(base, offset, shift);
+	pointers.push(pointer);
+	return pointer
 }
