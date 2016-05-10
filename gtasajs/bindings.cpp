@@ -44,7 +44,7 @@ JsValueRef CALLBACK setFloat(JsValueRef callee, bool isConstructCall, JsValueRef
 
 	*floatValue = doubleValue;
 
-	return nullptr;
+	return JS_INVALID_REFERENCE;
 }
 
 
@@ -67,7 +67,7 @@ JsValueRef CALLBACK setInt(JsValueRef callee, bool isConstructCall, JsValueRef *
 
 	*intValue = tempIntValue;
 
-	return nullptr;
+	return JS_INVALID_REFERENCE;
 }
 
 
@@ -90,5 +90,5 @@ JsValueRef CALLBACK setBool(JsValueRef callee, bool isConstructCall, JsValueRef 
 
 	*boolValue = tempBoolValue;
 
-	return nullptr;
+	return JS_INVALID_REFERENCE;
 }
