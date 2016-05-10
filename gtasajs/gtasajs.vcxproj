@@ -65,7 +65,7 @@
       <AdditionalDependencies>$(SolutionDir)plugin-sdk\lib\$(ConfigurationName)\plugin-sdk.lib;$(SolutionDir)ChakraCore\Build\VcBuild\bin\x86_debug\ChakraCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)ChakraCore\Build\VcBuild\bin\x86_debug\ChakraCore.dll $(OutputPath)</Command>
+      <Command>copy $(SolutionDir)ChakraCore\Build\VcBuild\bin\$(PlatformTarget)_$(ConfigurationName)\ChakraCore.dll $(OutputPath)</Command>
       <Message>Copy ChakraCore.dll</Message>
     </PostBuildEvent>
     <PreBuildEvent>
@@ -104,7 +104,7 @@ msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) C
       <AdditionalDependencies>$(SolutionDir)plugin-sdk\lib\$(ConfigurationName)\plugin-sdk.lib;$(SolutionDir)ChakraCore\Build\VcBuild\bin\x86_release\ChakraCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)ChakraCore\Build\VcBuild\bin\x86_release\ChakraCore.dll $(OutputPath)</Command>
+      <Command>copy $(SolutionDir)ChakraCore\Build\VcBuild\bin\$(PlatformTarget)_$(ConfigurationName)\ChakraCore.dll $(OutputPath)</Command>
       <Message>Copy ChakraCore.dll</Message>
     </PostBuildEvent>
     <PreBuildEvent>
