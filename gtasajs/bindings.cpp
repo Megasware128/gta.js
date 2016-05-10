@@ -16,7 +16,7 @@ JsValueRef CALLBACK getBool(JsValueRef callee, bool isConstructCall, JsValueRef 
 JsValueRef CALLBACK setBool(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState);
 
 
-void Ped(JsValueRef ped, Container& container) {
+void Bindings::Ped(JsValueRef ped, Container& container) {
 	void* data;
 	JsGetExternalData(ped, &data);
 	CPed* pedNative = (CPed*)data;
@@ -100,7 +100,7 @@ JsValueRef CALLBACK setBool(JsValueRef callee, bool isConstructCall, JsValueRef 
 }
 
 
-fake_ptr::fake_ptr(void* pointer, int offset, int shift)
+Bindings::fake_ptr::fake_ptr(void* pointer, int offset, int shift)
 {
 	this->pointer = pointer;
 	this->offset = offset;
@@ -108,11 +108,11 @@ fake_ptr::fake_ptr(void* pointer, int offset, int shift)
 }
 
 
-Container::Container()
+Bindings::Container::Container()
 {
 }
 
-Container::~Container()
+Bindings::Container::~Container()
 {
 	while (!pointers.empty())
 	{
@@ -121,7 +121,7 @@ Container::~Container()
 	}
 }
 
-fake_ptr* Container::create_pointer(void* base, int offset, int shift)
+fake_ptr* Bindings::Container::create_pointer(void* base, int offset, int shift)
 {
 	auto pointer = new fake_ptr(base, offset, shift);
 	pointers.push(pointer);
