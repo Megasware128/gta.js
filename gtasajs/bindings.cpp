@@ -125,5 +125,5 @@ fake_ptr* Container::create_pointer(void* base, int offset, int shift)
 {
 	auto pointer = new fake_ptr(base, offset, shift);
 	pointers.push(pointer);
-	return pointer
+	return pointer;
 }
