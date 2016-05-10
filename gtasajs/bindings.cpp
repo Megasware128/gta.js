@@ -82,7 +82,7 @@ JsValueRef CALLBACK getBool(JsValueRef callee, bool isConstructCall, JsValueRef 
 	bool boolValue = get(ptr->pointer, ptr->offset, ptr->shift);
 
 	JsValueRef booleanValue;
-	JsBoolToBoolean(booleanValue, &booleanValue);
+	JsBoolToBoolean(boolValue, &booleanValue);
 
 	return booleanValue;
 }
