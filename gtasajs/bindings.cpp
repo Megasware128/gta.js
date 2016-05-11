@@ -15,12 +15,16 @@ JsValueRef CALLBACK setInt(JsValueRef callee, bool isConstructCall, JsValueRef *
 JsValueRef CALLBACK getBool(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState);
 JsValueRef CALLBACK setBool(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState);
 
+JsValueRef CALLBACK getVector(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState);
+JsValueRef CALLBACK setVector(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState);
+
 
 void Bindings::Ped(JsValueRef ped, Container& container) {
 	void* data;
 	JsGetExternalData(ped, &data);
 	CPed* pedNative = (CPed*)data;
 
+	Js::DefineProperty(ped, L"position", getVector, setVector, &pedNative->m_pCoords->pos);
 	Js::DefineProperty(ped, L"health", getFloat, setFloat, &pedNative->m_fHealth);
 	Js::DefineProperty(ped, L"armor", getFloat, setFloat, &pedNative->m_fArmour);
 	Js::DefineProperty(ped, L"isDriving", getBool, nullptr, container.create_pointer(pedNative, 0x46C, 8));
@@ -126,4 +130,38 @@ fake_ptr* Bindings::Container::create_pointer(void* base, int offset, int shift)
 	auto pointer = new fake_ptr(base, offset, shift);
 	pointers.push(pointer);
 	return pointer;
+}
+
+
+JsValueRef CALLBACK getVector(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState)
+{
+	CVector* vectorValue = (CVector*)callbackState;
+
+	JsValueRef vectorObject;
+	JsCreateExternalObject(vectorValue, nullptr, &vectorObject);
+	Js::DefineProperty(vectorObject, L"x", getFloat, setFloat, &vectorValue->x);
+	Js::DefineProperty(vectorObject, L"y", getFloat, setFloat, &vectorValue->y);
+	Js::DefineProperty(vectorObject, L"z", getFloat, setFloat, &vectorValue->z);
+
+	return vectorObject;
+}
+
+JsValueRef CALLBACK setVector(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState)
+{
+	CVector* vectorValue = (CVector*)callbackState;
+
+	JsValueRef x, y, z;
+	Js::GetPropertyFromObject(arguments[1], L"x", &x);
+	Js::GetPropertyFromObject(arguments[1], L"y", &y);
+	Js::GetPropertyFromObject(arguments[1], L"z", &z);
+
+	double tempX, tempY, tempZ;
+	JsNumberToDouble(x, &tempX);
+	vectorValue->x = tempX;
+	JsNumberToDouble(y, &tempY);
+	vectorValue->y = tempY;
+	JsNumberToDouble(z, &tempZ);
+	vectorValue->z = tempZ;
+
+	return JS_INVALID_REFERENCE;
 }
