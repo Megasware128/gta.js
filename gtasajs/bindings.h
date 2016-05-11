@@ -27,8 +27,7 @@ namespace Bindings {
 	{
 		_asm
 		{
-			push ebp
-			mov ebp, esp
+			enter 0, 0
 			mov	eax, dword ptr[aBase]
 			mov ecx, dword ptr[aOffset]
 			mov	edx, dword ptr[eax + ecx]
@@ -36,7 +35,7 @@ namespace Bindings {
 			shr	edx, cl
 			and edx, 1
 			mov	eax, edx
-			pop ebp
+			leave
 			ret
 		}
 	}
@@ -45,8 +44,7 @@ namespace Bindings {
 	{
 		_asm
 		{
-			push ebp
-			mov ebp, esp
+			enter 0, 0
 			mov eax, dword ptr[value]
 			and eax, 1
 			mov ecx, dword ptr[shift]
@@ -61,7 +59,7 @@ namespace Bindings {
 			or edx, eax
 			mov	eax, dword ptr[aBase]
 			mov	dword ptr[eax + ecx], edx
-			pop ebp
+			leave
 			ret
 		}
 	}
