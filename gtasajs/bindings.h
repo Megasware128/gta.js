@@ -1,7 +1,9 @@
 #pragma once
 #include <queue>
+#include <boost\ptr_container\ptr_vector.hpp>
 
 using namespace std;
+using namespace boost;
 
 namespace Bindings {
 	struct fake_ptr
@@ -20,7 +22,7 @@ namespace Bindings {
 
 		fake_ptr* create_pointer(void* base, int offset, int shift);
 	private:
-		queue<fake_ptr*> pointers;
+		ptr_vector<fake_ptr> pointers;
 	};
 
 	inline bool __declspec(naked) get(void* aBase, int aOffset, int shift)

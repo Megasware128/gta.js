@@ -118,17 +118,12 @@ Bindings::Container::Container()
 
 Bindings::Container::~Container()
 {
-	while (!pointers.empty())
-	{
-		delete pointers.front();
-		pointers.pop();
-	}
 }
 
 fake_ptr* Bindings::Container::create_pointer(void* base, int offset, int shift)
 {
 	auto pointer = new fake_ptr(base, offset, shift);
-	pointers.push(pointer);
+	pointers.push_back(pointer);
 	return pointer;
 }
 
