@@ -5,3 +5,6 @@
 	path = ChakraCore
 	url = https://github.com/Microsoft/ChakraCore.git
 	branch = release/1.2
+[submodule "IxCpp"]
+	path = IxCpp
+	url = https://github.com/Megasware128/IxCpp.git
