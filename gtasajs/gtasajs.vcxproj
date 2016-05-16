@@ -57,7 +57,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;GTASAJS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)plugin-sdk\injector\include;$(SolutionDir)plugin-sdk\src\sdk;$(SolutionDir)ChakraCore\lib\Jsrt;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)plugin-sdk\injector\include;$(SolutionDir)plugin-sdk\src\sdk;$(SolutionDir)ChakraCore\lib\Jsrt;$(SolutionDir)IxCpp\Ix\CPP\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -94,7 +94,7 @@ msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) C
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;GTASAJS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)plugin-sdk\injector\include;$(SolutionDir)plugin-sdk\src\sdk;$(SolutionDir)ChakraCore\lib\Jsrt;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)plugin-sdk\injector\include;$(SolutionDir)plugin-sdk\src\sdk;$(SolutionDir)ChakraCore\lib\Jsrt;$(SolutionDir)IxCpp\Ix\CPP\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
