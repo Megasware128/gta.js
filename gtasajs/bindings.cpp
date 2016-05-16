@@ -3,8 +3,10 @@
 #include "helper.h"
 #include <game_sa\CPed.h>
 #include <injector\calling.hpp>
+#include <cpplinq\linq.hpp>
 
 using namespace Bindings;
+using namespace cpplinq;
 
 JsValueRef CALLBACK getFloat(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState);
 JsValueRef CALLBACK setFloat(JsValueRef callee, bool isConstructCall, JsValueRef *arguments, unsigned short argumentCount, void *callbackState);
@@ -98,7 +100,7 @@ JsValueRef CALLBACK setBool(JsValueRef callee, bool isConstructCall, JsValueRef 
 	bool tempBoolValue;
 	JsBooleanToBool(arguments[1], &tempBoolValue);
 
-	set(ptr->pointer, ptr->offset, ptr->shift, tempBoolValue);
+	Bindings::set(ptr->pointer, ptr->offset, ptr->shift, tempBoolValue);
 
 	return JS_INVALID_REFERENCE;
 }
@@ -122,6 +124,9 @@ Bindings::Container::~Container()
 
 fake_ptr* Bindings::Container::create_pointer(void* base, int offset, int shift)
 {
+	auto query = from(pointers).where([base, offset, shift](const fake_ptr& ptr) { return ptr.pointer == base && ptr.offset == offset && ptr.shift == shift; });
+	if (query.any())
+		return &query.first();
 	auto pointer = new fake_ptr(base, offset, shift);
 	pointers.push_back(pointer);
 	return pointer;
