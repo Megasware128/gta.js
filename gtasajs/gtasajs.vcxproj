@@ -59,6 +59,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;GTASAJS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)plugin-sdk\injector\include;$(SolutionDir)plugin-sdk\plugin_sa;$(SolutionDir)ChakraCore\lib\Jsrt;$(SolutionDir)IxCpp\Ix\CPP\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -78,8 +79,8 @@ git submodule update --init</Command>
     </PreBuildEvent>
     <PreLinkEvent>
       <Command>cd $(SolutionDir)
-msbuild /p:Configuration=$(ConfigurationName) plugin-sdk\plugin_sa\proj\plugin_sa.vcxproj
-msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) ChakraCore\Build\Chakra.Core.sln</Command>
+msbuild /m /p:Configuration=$(ConfigurationName) plugin-sdk\plugin.sln
+msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) /p:RuntimeLib=static_library ChakraCore\Build\Chakra.Core.sln</Command>
     </PreLinkEvent>
     <PreLinkEvent>
       <Message>Build dependencies</Message>
@@ -95,6 +96,7 @@ msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) C
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;GTASAJS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)plugin-sdk\injector\include;$(SolutionDir)plugin-sdk\plugin_sa;$(SolutionDir)ChakraCore\lib\Jsrt;$(SolutionDir)IxCpp\Ix\CPP\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -116,8 +118,8 @@ git submodule update --init</Command>
     </PreBuildEvent>
     <PreLinkEvent>
       <Command>cd $(SolutionDir)
-msbuild /p:Configuration=$(ConfigurationName) plugin-sdk\plugin.sln
-msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) ChakraCore\Build\Chakra.Core.sln</Command>
+msbuild /m /p:Configuration=$(ConfigurationName) plugin-sdk\plugin.sln
+msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) /p:RuntimeLib=static_library ChakraCore\Build\Chakra.Core.sln</Command>
     </PreLinkEvent>
     <PreLinkEvent>
       <Message>Build dependencies</Message>

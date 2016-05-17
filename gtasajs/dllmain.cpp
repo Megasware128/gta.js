@@ -12,8 +12,8 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 	if (ul_reason_for_call == DLL_PROCESS_ATTACH)
 	{
 		Events::initRwEvent += gtasajs::Init;
-		Events::initRwEvent += gtasajs::Start;
-		Events::initRwEvent += gtasajs::Restart;
+		Events::initGameEvent += gtasajs::Start;
+		Events::reInitGameEvent += gtasajs::Restart;
 		Events::gameProcessEvent += gtasajs::Main;
 		Events::shutdownRwEvent += gtasajs::Close;
 	}
