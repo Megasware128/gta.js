@@ -64,7 +64,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)plugin-sdk\output\lib\plugin_sa\$(ConfigurationName)\plugin_d.lib;$(SolutionDir)ChakraCore\Build\VcBuild\bin\$(PlatformTarget)_$(ConfigurationName)\ChakraCore.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)plugin-sdk\output\lib\plugin_sa\$(ConfigurationName)\plugin.lib;$(SolutionDir)ChakraCore\Build\VcBuild\bin\$(PlatformTarget)_$(ConfigurationName)\ChakraCore.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)ChakraCore\Build\VcBuild\bin\$(PlatformTarget)_$(ConfigurationName)\ChakraCore.dll "$(OutputPath)"</Command>
