@@ -31,7 +31,7 @@ void gtasajs::Main()
 }
 
 
-void gtasajs::Restart() 
+void gtasajs::Restart()
 {
 	Close();
 	Init();

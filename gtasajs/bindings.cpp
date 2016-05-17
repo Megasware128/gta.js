@@ -26,7 +26,7 @@ void Bindings::Ped(JsValueRef ped, Container& container) {
 	JsGetExternalData(ped, &data);
 	CPed* pedNative = (CPed*)data;
 
-	Js::DefineProperty(ped, L"position", getVector, setVector, &pedNative->m_pCoords->pos);
+	Js::DefineProperty(ped, L"position", getVector, setVector, &pedNative->m_matrix->pos);
 	Js::DefineProperty(ped, L"health", getFloat, setFloat, &pedNative->m_fHealth);
 	Js::DefineProperty(ped, L"armor", getFloat, setFloat, &pedNative->m_fArmour);
 	Js::DefineProperty(ped, L"isDriving", getBool, nullptr, container.create_pointer(pedNative, 0x46C, 8));

@@ -58,12 +58,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;GTASAJS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)plugin-sdk\injector\include;$(SolutionDir)plugin-sdk\src\sdk;$(SolutionDir)ChakraCore\lib\Jsrt;$(SolutionDir)IxCpp\Ix\CPP\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)plugin-sdk\injector\include;$(SolutionDir)plugin-sdk\plugin_sa;$(SolutionDir)ChakraCore\lib\Jsrt;$(SolutionDir)IxCpp\Ix\CPP\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)plugin-sdk\lib\$(ConfigurationName)\plugin-sdk.lib;$(SolutionDir)ChakraCore\Build\VcBuild\bin\x86_debug\ChakraCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)plugin-sdk\output\lib\plugin_sa\$(ConfigurationName)\plugin_d.lib;$(SolutionDir)ChakraCore\Build\VcBuild\bin\$(PlatformTarget)_$(ConfigurationName)\ChakraCore.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)ChakraCore\Build\VcBuild\bin\$(PlatformTarget)_$(ConfigurationName)\ChakraCore.dll "$(OutputPath)"</Command>
@@ -73,13 +73,12 @@
       <Command>cd $(SolutionDir)
 git submodule update --init
 cd $(SolutionDir)plugin-sdk
-git submodule update --init
-cmake .</Command>
+git submodule update --init</Command>
       <Message>Acquire dependencies</Message>
     </PreBuildEvent>
     <PreLinkEvent>
       <Command>cd $(SolutionDir)
-msbuild /p:Configuration=$(ConfigurationName) plugin-sdk\plugin-sdk.sln
+msbuild /p:Configuration=$(ConfigurationName) plugin-sdk\plugin_sa\proj\plugin_sa.vcxproj
 msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) ChakraCore\Build\Chakra.Core.sln</Command>
     </PreLinkEvent>
     <PreLinkEvent>
@@ -95,14 +94,14 @@ msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) C
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;GTASAJS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)plugin-sdk\injector\include;$(SolutionDir)plugin-sdk\src\sdk;$(SolutionDir)ChakraCore\lib\Jsrt;$(SolutionDir)IxCpp\Ix\CPP\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)plugin-sdk\injector\include;$(SolutionDir)plugin-sdk\plugin_sa;$(SolutionDir)ChakraCore\lib\Jsrt;$(SolutionDir)IxCpp\Ix\CPP\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)plugin-sdk\lib\$(ConfigurationName)\plugin-sdk.lib;$(SolutionDir)ChakraCore\Build\VcBuild\bin\x86_release\ChakraCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)plugin-sdk\output\lib\plugin_sa\$(ConfigurationName)\plugin.lib;$(SolutionDir)ChakraCore\Build\VcBuild\bin\$(PlatformTarget)_$(ConfigurationName)\ChakraCore.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)ChakraCore\Build\VcBuild\bin\$(PlatformTarget)_$(ConfigurationName)\ChakraCore.dll "$(OutputPath)"</Command>
@@ -112,13 +111,12 @@ msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) C
       <Command>cd $(SolutionDir)
 git submodule update --init
 cd $(SolutionDir)plugin-sdk
-git submodule update --init
-cmake .</Command>
+git submodule update --init</Command>
       <Message>Acquire dependencies</Message>
     </PreBuildEvent>
     <PreLinkEvent>
       <Command>cd $(SolutionDir)
-msbuild /p:Configuration=$(ConfigurationName) plugin-sdk\plugin-sdk.sln
+msbuild /p:Configuration=$(ConfigurationName) plugin-sdk\plugin.sln
 msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) ChakraCore\Build\Chakra.Core.sln</Command>
     </PreLinkEvent>
     <PreLinkEvent>
