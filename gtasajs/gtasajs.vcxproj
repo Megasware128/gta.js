@@ -79,7 +79,7 @@ git submodule update --init</Command>
     </PreBuildEvent>
     <PreLinkEvent>
       <Command>cd $(SolutionDir)
-msbuild /m /p:Configuration=$(ConfigurationName) plugin-sdk\plugin.sln
+msbuild /p:Configuration=$(ConfigurationName)_plugin plugin-sdk\plugin.sln
 msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) /p:RuntimeLib=static_library ChakraCore\Build\Chakra.Core.sln</Command>
     </PreLinkEvent>
     <PreLinkEvent>
