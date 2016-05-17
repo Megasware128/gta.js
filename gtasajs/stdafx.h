@@ -17,7 +17,7 @@
 #include <injector\injector.hpp>
 
 // plugin-sdk header files:
-#include <plugin\plugin.h>
+#include <plugin.h>
 
 // ChakraCore header files:
 #include <ChakraCore.h>
