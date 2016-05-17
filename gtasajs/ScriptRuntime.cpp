@@ -19,7 +19,7 @@ ScriptRuntime::ScriptRuntime()
 	JsSetCurrentContext(context);
 	JsSetPromiseContinuationCallback(PromiseContinuationCallback, &taskQueue);
 	SDKLoader loader;
-	loader.LoadSDK(&taskQueue);
+	loader.LoadSDK(&taskQueue, container);
 	JsSetCurrentContext(JS_INVALID_REFERENCE);
 }
 
