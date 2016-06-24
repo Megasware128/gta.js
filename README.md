@@ -1,5 +1,5 @@
-# gtasa.js
-A Grand Theft Auto: San Andreas JavaScript hook
+# gta.js
+A Grand Theft Auto JavaScript hook
 
 ## Building
 ### Requirments
