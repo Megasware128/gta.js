@@ -14,7 +14,7 @@
     <ProjectGuid>{3F19D574-FEC7-4700-B4E0-9888F434B755}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>gtasajs</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
