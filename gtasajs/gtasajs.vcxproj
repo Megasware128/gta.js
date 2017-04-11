@@ -64,12 +64,8 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)plugin-sdk\output\lib\plugin_sa\$(ConfigurationName)\plugin.lib;$(SolutionDir)ChakraCore\Build\VcBuild\bin\$(PlatformTarget)_$(ConfigurationName)\ChakraCore.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)plugin-sdk\output\lib\plugin_sa\$(ConfigurationName)\plugin.lib</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy $(SolutionDir)ChakraCore\Build\VcBuild\bin\$(PlatformTarget)_$(ConfigurationName)\ChakraCore.dll "$(OutputPath)"</Command>
-      <Message>Copy ChakraCore.dll</Message>
-    </PostBuildEvent>
     <PreBuildEvent>
       <Command>cd $(SolutionDir)
 git submodule update --init
@@ -79,8 +75,7 @@ git submodule update --init</Command>
     </PreBuildEvent>
     <PreLinkEvent>
       <Command>cd $(SolutionDir)
-msbuild /p:Configuration=$(ConfigurationName)_NoExamples plugin-sdk\plugin.sln
-msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) /p:RuntimeLib=static_library ChakraCore\Build\Chakra.Core.sln</Command>
+msbuild /p:Configuration=$(ConfigurationName)_NoExamples plugin-sdk\plugin.sln</Command>
     </PreLinkEvent>
     <PreLinkEvent>
       <Message>Build dependencies</Message>
@@ -103,12 +98,8 @@ msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) /
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)plugin-sdk\output\lib\plugin_sa\$(ConfigurationName)\plugin.lib;$(SolutionDir)ChakraCore\Build\VcBuild\bin\$(PlatformTarget)_$(ConfigurationName)\ChakraCore.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)plugin-sdk\output\lib\plugin_sa\$(ConfigurationName)\plugin.lib</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy $(SolutionDir)ChakraCore\Build\VcBuild\bin\$(PlatformTarget)_$(ConfigurationName)\ChakraCore.dll "$(OutputPath)"</Command>
-      <Message>Copy ChakraCore.dll</Message>
-    </PostBuildEvent>
     <PreBuildEvent>
       <Command>cd $(SolutionDir)
 git submodule update --init
@@ -118,8 +109,7 @@ git submodule update --init</Command>
     </PreBuildEvent>
     <PreLinkEvent>
       <Command>cd $(SolutionDir)
-msbuild /p:Configuration=$(ConfigurationName)_plugin plugin-sdk\plugin.sln
-msbuild /m /p:Platform=$(PlatformTarget) /p:Configuration=$(ConfigurationName) /p:RuntimeLib=static_library ChakraCore\Build\Chakra.Core.sln</Command>
+msbuild /p:Configuration=$(ConfigurationName)_plugin plugin-sdk\plugin.sln</Command>
     </PreLinkEvent>
     <PreLinkEvent>
       <Message>Build dependencies</Message>
